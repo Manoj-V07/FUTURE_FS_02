@@ -3,9 +3,6 @@ require('dotenv').config();
 const Product = require('./models/Product');
 const User = require('./models/User');
 
-// Load environment variables
-dotenv.config({ path: './config.env' });
-
 // Sample products data
 const products = [
   {
