@@ -19,14 +19,11 @@ const ProductDetailPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [addingToCart, setAddingToCart] = useState(false);
 
-  const apiUrl = 'http://localhost:5000';
-
   const fetchProduct = async () => {
     try {
       setLoading(true);
       console.log('Fetching product with ID:', id);
-      console.log('API URL:', apiUrl);
-      const response = await axios.get(`${apiUrl}/api/products/${id}`);
+      const response = await axios.get(`/api/products/${id}`);
       console.log('Product data received:', response.data);
       setProduct(response.data);
       setError(null);

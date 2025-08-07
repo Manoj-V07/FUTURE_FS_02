@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
@@ -14,6 +15,9 @@ import OrdersPage from './pages/OrdersPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import LoadingSpinner from './components/LoadingSpinner';
 import { useAuth } from './contexts/AuthContext';
+
+// Set axios base URL for production
+axios.defaults.baseURL = 'https://future-fs-02-1-7vxs.onrender.com';
 
 function App() {
   const { loading } = useAuth();
