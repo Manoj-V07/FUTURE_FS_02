@@ -33,11 +33,20 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
 });
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ecommerce-gadgets';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/ecommerce-gadgets';
 
-mongoose.connect(MONGODB_URI)
+if (!process.env.MONGO_URI) {
+  console.log('Warning: MONGO_URI not set, using local MongoDB');
+}
+
+mongoose.connect(MONGO_URI)
   .then(() => {
     console.log('Connected to MongoDB Atlas');
-    app.listen(5000, () => console.log('Server running on port 5000'));
+    app.listen(process.env.PORT || 5000, () => {
+      console.log(`Server running on port ${process.env.PORT || 5000}`);
+    });
   })
-  .catch(err => console.log('MongoDB connection error:', err)); 
+  .catch(err => {
+    console.log('MongoDB connection error:', err);
+    console.log('Please check your MONGO_URI environment variable');
+  }); 
