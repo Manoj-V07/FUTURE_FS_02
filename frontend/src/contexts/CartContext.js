@@ -70,20 +70,10 @@ export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
   const { isAuthenticated } = useAuth();
 
-  // Load cart when user is authenticated
-  useEffect(() => {
-    if (isAuthenticated) {
-      loadCart();
-    } else {
-      dispatch({ type: 'CLEAR_CART' });
-    }
-  }, [isAuthenticated]);
-
+  // Define loadCart before useEffect
   const loadCart = async () => {
     if (!isAuthenticated) return;
-
     dispatch({ type: 'CART_LOADING' });
-    
     try {
       const response = await axios.get('/api/cart');
       dispatch({
@@ -97,6 +87,15 @@ export const CartProvider = ({ children }) => {
       });
     }
   };
+
+  // Load cart when user is authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      loadCart();
+    } else {
+      dispatch({ type: 'CLEAR_CART' });
+    }
+  }, [isAuthenticated]);
 
   const addToCart = async (productId, quantity = 1) => {
     console.log('addToCart called, isAuthenticated:', isAuthenticated);

@@ -61,17 +61,17 @@ export const AuthProvider = ({ children }) => {
 
   // Set up axios default headers
   useEffect(() => {
-    console.log('AuthContext: Token changed to:', state.token);
-    console.log('AuthContext: isAuthenticated:', state.isAuthenticated);
+    //console.log('AuthContext: Token changed to:', state.token);
+    //console.log('AuthContext: isAuthenticated:', state.isAuthenticated);
     
     if (state.token) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${state.token}`;
       localStorage.setItem('token', state.token);
-      console.log('AuthContext: Set axios header and localStorage token');
+      //console.log('AuthContext: Set axios header and localStorage token');
     } else {
       delete axios.defaults.headers.common['Authorization'];
       localStorage.removeItem('token');
-      console.log('AuthContext: Removed axios header and localStorage token');
+      //console.log('AuthContext: Removed axios header and localStorage token');
     }
   }, [state.token]);
 

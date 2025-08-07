@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FiMail, FiLock, FiEye, FiEyeOff, FiUser } from 'react-icons/fi';
+import { FiEye, FiEyeOff, FiUser } from 'react-icons/fi';
 import { useAuth } from '../contexts/AuthContext';
 
 const SignupPage = () => {
   const navigate = useNavigate();
-  const { signup, loading, error, clearError } = useAuth();
+  const { signup, loading, error } = useAuth();
   
   const [formData, setFormData] = useState({
     name: '',

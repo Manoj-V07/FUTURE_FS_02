@@ -19,23 +19,29 @@ const ProductDetailPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [addingToCart, setAddingToCart] = useState(false);
 
-  useEffect(() => {
-    fetchProduct();
-  }, [id]);
+  const apiUrl = 'http://localhost:5000';
 
   const fetchProduct = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`/api/products/${id}`);
+      console.log('Fetching product with ID:', id);
+      console.log('API URL:', apiUrl);
+      const response = await axios.get(`${apiUrl}/api/products/${id}`);
+      console.log('Product data received:', response.data);
       setProduct(response.data);
       setError(null);
     } catch (err) {
-      setError('Product not found or failed to load.');
       console.error('Error fetching product:', err);
+      console.error('Error response:', err.response);
+      setError('Product not found or failed to load.');
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchProduct();
+  }, [id]);
 
   const handleAddToCart = async () => {
     if (!isAuthenticated) {
@@ -115,8 +121,8 @@ const ProductDetailPage = () => {
               {/* Product Title */}
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 mb-2">{product.name}</h1>
-                <p className="text-lg text-gray-600 mb-4">{product.brand}</p>
-                <p className="text-gray-600 leading-relaxed">{product.description}</p>
+                <p className="text-lg text-gray-600 mb-4">{product.brand || "Brand not available"}</p>
+                <p className="text-gray-600 leading-relaxed">{product.description || "No description"}</p>
               </div>
 
               {/* Rating */}
@@ -140,7 +146,9 @@ const ProductDetailPage = () => {
 
               {/* Price */}
               <div className="text-3xl font-bold text-primary">
-                ${product.price.toFixed(2)}
+                {typeof product.price === "number" && !isNaN(product.price)
+                  ? `$${product.price.toFixed(2)}`
+                  : "Price not available"}
               </div>
 
               {/* Stock Status */}
@@ -207,12 +215,10 @@ const ProductDetailPage = () => {
               </div>
             </div>
           </div>
-
-          
         </motion.div>
       </div>
     </div>
   );
 };
 
-export default ProductDetailPage; 
+export default ProductDetailPage;

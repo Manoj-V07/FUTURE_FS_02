@@ -16,16 +16,16 @@ const Footer = () => {
               <span className="text-lg font-bold">TechGadgets</span>
             </div>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-200">
                 <FaFacebook className="text-lg" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-200">
                 <FaTwitter className="text-lg" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-200">
                 <FaInstagram className="text-lg" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-200">
                 <FaLinkedin className="text-lg" />
               </a>
             </div>
@@ -66,10 +66,10 @@ const Footer = () => {
               © 2024 TechGadgets. All rights reserved.
             </p>
             <div className="flex space-x-4 mt-2 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-white text-xs transition-colors duration-200">
+              <a href="/privacy-policy" className="text-gray-400 hover:text-white text-xs transition-colors duration-200">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-white text-xs transition-colors duration-200">
+              <a href="/terms-of-service" className="text-gray-400 hover:text-white text-xs transition-colors duration-200">
                 Terms of Service
               </a>
             </div>

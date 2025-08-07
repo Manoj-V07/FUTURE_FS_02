@@ -13,7 +13,7 @@ import { useCart } from '../contexts/CartContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user, isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
   const { getCartItemCount } = useCart();
   const navigate = useNavigate();
 

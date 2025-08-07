@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FiCreditCard, FiTruck, FiCheck, FiArrowLeft, FiLock } from 'react-icons/fi';
+import { FiCreditCard, FiTruck, FiArrowLeft, FiLock } from 'react-icons/fi';
 import { useCart } from '../contexts/CartContext';
 import { useAuth } from '../contexts/AuthContext';
-import axios from 'axios';
 
 const OrderPage = () => {
   const navigate = useNavigate();
   const { user, isAuthenticated } = useAuth();
-  const { items, total, clearCart, loading: cartLoading } = useCart();
+  const { items, clearCart, loading: cartLoading } = useCart();
   
   // Debug logging
   console.log('OrderPage - User:', user);

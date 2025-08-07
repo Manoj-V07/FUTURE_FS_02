@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FiMail, FiLock, FiEye, FiEyeOff, FiUser } from 'react-icons/fi';
+import { FiEye, FiEyeOff, FiUser } from 'react-icons/fi';
 import { useAuth } from '../contexts/AuthContext';
 
 const LoginPage = () => {
